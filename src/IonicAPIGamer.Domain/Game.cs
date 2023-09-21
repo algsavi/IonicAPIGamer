@@ -20,7 +20,7 @@ public class Game
 
     private bool IsAValidGame(string name, decimal price)
     {
-        if(name.Length > 5)
+        if(name.Length < 5)
             return false;
 
         if (price > 0)
