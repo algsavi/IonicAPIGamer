@@ -1,6 +1,3 @@
-using IonicAPIGamer.Domain;
-using NUnit.Framework;
-
 namespace IonicAPIGamer.Test;
 
 public class UserTest
