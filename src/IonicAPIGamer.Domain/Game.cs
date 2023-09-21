@@ -23,7 +23,7 @@ public class Game
         if(name.Length < 5)
             return false;
 
-        if (price > 0)
+        if (price <= 0)
             return false;
 
         return true;
