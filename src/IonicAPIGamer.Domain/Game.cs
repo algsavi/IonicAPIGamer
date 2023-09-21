@@ -8,12 +8,14 @@ public class Game
 
     public Game(string name, decimal price)
     {
-        if (IsAValidGame(name, price))
+        if (!IsAValidGame(name, price))
         {
-            Name = name;
-            Price = price;
-            IsActive = true;
+            throw new Exception("Invalid Game Data!");
         }
+
+        Name = name;
+        Price = price;
+        IsActive = true;
     }
 
     private bool IsAValidGame(string name, decimal price)
