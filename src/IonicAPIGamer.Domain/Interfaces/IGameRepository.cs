@@ -4,6 +4,7 @@ namespace IonicAPIGamer.Domain.Interfaces;
 
 public interface IGameRepository
 {
-    Game GetGameById(int id);
+    Task<List<Game>> GetAll();
+    Task<Game> GetGameById(int id);
     void CreateGame(Game game);
 }

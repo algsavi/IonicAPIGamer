@@ -2,16 +2,16 @@
 
 public class User
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string Name { get; private set; }
-    public DateOnly BirthDate { get; private set; }
+    public DateTime BirthDate { get; private set; }
     public bool IsActive { get; private set; }
 
     public List<Game> Games { get; private set; }
 
     public User() { }
 
-    public User(string name, DateOnly birthDate)
+    public User(string name, DateTime birthDate)
     {
         if (!IsAValidUser(name))
         {
@@ -30,7 +30,7 @@ public class User
 
     private bool IsAValidUser(string name)
     {
-        if (name.Length < 3)
+        if (name.Length < 3 && name.Length > 50)
             return false;
 
         return true;

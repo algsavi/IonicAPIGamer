@@ -18,8 +18,13 @@ public class GameService : IGameService
         _gameRepository.CreateGame(game);
     }
 
-    public Game GetGameById(int id)
+    public async Task<Game> GetGameById(int id)
     {
-        return _gameRepository.GetGameById(id);
+        return await _gameRepository.GetGameById(id);
+    }
+
+    public async Task<List<Game>> GetGames()
+    {
+        return await _gameRepository.GetAll();
     }
 }

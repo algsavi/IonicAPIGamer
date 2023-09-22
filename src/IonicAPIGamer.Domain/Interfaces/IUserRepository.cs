@@ -4,6 +4,6 @@ namespace IonicAPIGamer.Domain.Interfaces;
 
 public interface IUserRepository
 {
-    User GetUserById(int id);
+    Task<User> GetUserById(int id);
     void CreateUser(User user);
 }

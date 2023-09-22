@@ -18,7 +18,7 @@ public class UserService : IUserService
         _userRepository.CreateUser(user);
     }
 
-    public User GetUserById(int id)
+    public Task<User> GetUserById(int id)
     {
         return _userRepository.GetUserById(id);
     }

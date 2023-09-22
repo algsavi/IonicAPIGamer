@@ -9,8 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="WeatherForecast.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IonicAPIGamer.Application\IonicAPIGamer.Application.csproj" />
+    <ProjectReference Include="..\IonicAPIGamer.Infra.Data\IonicAPIGamer.Infra.Data.csproj" />
+    <ProjectReference Include="..\IonicApiGames.Infra.IoC\IonicApiGamer.Infra.IoC.csproj" />
+    <ProjectReference Include="..\IonicApiGaner.Model\IonicApiGaner.Model.csproj" />
   </ItemGroup>
 
 </Project>
