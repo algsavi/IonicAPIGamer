@@ -18,7 +18,7 @@ public class IonicApiGamerDbContext : DbContext
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(@"Server=CXJ0221\SQLEXPRESS01;Database=APIGamer;User Id=sa;Password=mko09xsw23;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer(@"Server=ionicapidb;Database=APIGamer;User Id=sa;Password=p@ssw0rd;TrustServerCertificate=True;");
 
 
     public virtual DbSet<User> Users { get; set; }

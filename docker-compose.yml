@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  ionicapidb:
+    container_name: ionicapidb
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=p@ssw0rd
+      - MSSQL_DBNAME=APIGamer
+      - MSSQL_PID=Express
+    networks:
+      - ionic
+    volumes:
+      - meu-volume-sql:/var/opt/mssql
+
+  ionicapigamer.presentation.api:
+    container_name: ionic-api-gamer
+    image: ${DOCKER_REGISTRY-}ionicapigamerpresentationapi
+    build:
+      context: .
+      dockerfile: src/IonicApiGamer.Presentation.API/Dockerfile
+    ports:
+      - 8001:80
+    depends_on:
+      - ionicapidb
+    networks:
+      - ionic
+
+networks:
+  ionic:
+
+volumes:
+  meu-volume-sql:
