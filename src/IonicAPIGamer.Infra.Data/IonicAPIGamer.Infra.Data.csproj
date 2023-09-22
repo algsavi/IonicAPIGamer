@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
   </ItemGroup>
 
 </Project>

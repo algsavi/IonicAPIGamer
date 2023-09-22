@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\IonicAPIGamer.Application\IonicAPIGamer.Application.csproj" />
     <ProjectReference Include="..\IonicAPIGamer.Infra.Data\IonicAPIGamer.Infra.Data.csproj" />
-    <ProjectReference Include="..\src\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
   </ItemGroup>
 
 </Project>

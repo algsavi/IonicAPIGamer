@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
+    <ProjectReference Include="..\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
   </ItemGroup>
 
 </Project>
