@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IonicApiGamer.Presentation.
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6FC185FC-D68F-49AA-AE05-8543260C16C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IonicAPIGamer.Infra.Caching", "..\IonicAPIGamer.Infra.Caching\IonicAPIGamer.Infra.Caching.csproj", "{F56E491B-6C3D-4733-9EDA-F059D30FA81D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{6FC185FC-D68F-49AA-AE05-8543260C16C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FC185FC-D68F-49AA-AE05-8543260C16C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FC185FC-D68F-49AA-AE05-8543260C16C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F56E491B-6C3D-4733-9EDA-F059D30FA81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56E491B-6C3D-4733-9EDA-F059D30FA81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F56E491B-6C3D-4733-9EDA-F059D30FA81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56E491B-6C3D-4733-9EDA-F059D30FA81D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{D659A709-9D97-4010-A067-C3B89DA009E6} = {31FA47E9-EEB2-4465-9B1B-52EA3ADEE9C5}
 		{C6450010-B416-4801-8FF8-031906BE6FE1} = {31FA47E9-EEB2-4465-9B1B-52EA3ADEE9C5}
 		{DD114AC2-DE73-4208-AE7A-1618B8870DDE} = {31FA47E9-EEB2-4465-9B1B-52EA3ADEE9C5}
+		{F56E491B-6C3D-4733-9EDA-F059D30FA81D} = {31FA47E9-EEB2-4465-9B1B-52EA3ADEE9C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3D246AB-B290-4097-A80F-87CECA187DE0}

@@ -16,10 +16,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\IonicAPIGamer.Infra.Caching\IonicAPIGamer.Infra.Caching.csproj" />
     <ProjectReference Include="..\IonicAPIGamer.Application\IonicAPIGamer.Application.csproj" />
     <ProjectReference Include="..\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
     <ProjectReference Include="..\IonicApiGames.Infra.IoC\IonicApiGamer.Infra.IoC.csproj" />

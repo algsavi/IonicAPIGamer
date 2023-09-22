@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using IonicAPIGamer.Infra.Caching;
 
 namespace IonicApiGamer.Infra.IoC;
 
@@ -17,15 +18,20 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("ApplicationConnection");
 
-        services.AddDbContext<IonicApiGamerDbContext>(options =>
-        {
+        services.AddDbContext<IonicApiGamerDbContext>(options => {
             options.UseSqlServer(connectionString);
+        });
+
+        services.AddStackExchangeRedisCache(options => {
+            options.InstanceName = "redis-instance-";
+            options.Configuration = "redisdb:6379";
         });
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IGameRepository, GameRepository>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IGameService, GameService>();
+        services.AddScoped<ICachingService, CachingService>();
 
         return services;
     }

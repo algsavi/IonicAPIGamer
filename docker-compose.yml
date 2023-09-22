@@ -28,6 +28,13 @@ services:
       - ionicapidb
     networks:
       - ionic
+  redisdb:
+    container_name: redisdb
+    image: redis:latest
+    ports:
+      - 6379:6379
+    networks:
+      - ionic
 
 networks:
   ionic:

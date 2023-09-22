@@ -1,9 +1,10 @@
 ﻿using IonicApiGamer.Model.ApiReturn;
 using IonicApiGamer.Model.Constants;
 using IonicAPIGamer.Application.Interfaces;
-using IonicAPIGamer.Domain.Entities;
+using IonicAPIGamer.Infra.Caching;
 using IonicApiGaner.Model.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace IonicApiGamer.Presentation.API.Controllers
 {
@@ -12,9 +13,11 @@ namespace IonicApiGamer.Presentation.API.Controllers
     public class GameController : ControllerBase
     {
         private readonly IGameService _gameService;
+        private readonly ICachingService _cachingService;
 
-        public GameController(IGameService gameService)
+        public GameController(ICachingService cacheService, IGameService gameService)
         {
+            _cachingService = cacheService;
             _gameService = gameService;
         }
 
@@ -26,7 +29,16 @@ namespace IonicApiGamer.Presentation.API.Controllers
 
             try
             {
-                GameModel result = await _gameService.GetGameById(id);
+                var cachedGame = await _cachingService.GetAsync(id.ToString());
+
+                GameModel result;
+
+                if (cachedGame != null)
+                    result = JsonConvert.DeserializeObject<GameModel>(cachedGame);
+                else
+                    result = await _gameService.GetGameById(id);
+
+                await _cachingService.SetAsync(id.ToString(), JsonConvert.SerializeObject(result));
 
                 dataToReturn.Message = Constants.OK_RETURN;
                 dataToReturn.Game = result;
