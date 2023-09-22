@@ -7,16 +7,14 @@ namespace IonicAPIGamer.Infra.Data.Context;
 
 public class IonicApiGamerDbContext : DbContext
 {
-    private readonly IConfiguration _configuration;
-
     public IonicApiGamerDbContext()
     {
     }
 
-    public IonicApiGamerDbContext(DbContextOptions<IonicApiGamerDbContext> options, IConfiguration configuration)
+    public IonicApiGamerDbContext(DbContextOptions<IonicApiGamerDbContext> options)
         : base(options)
     {
-        _configuration = configuration;
+        
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

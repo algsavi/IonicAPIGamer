@@ -9,7 +9,7 @@ public class User
 
     public List<Game> Games { get; private set; }
 
-    public User() { }
+    private User() { }
 
     public User(string name, DateTime birthDate)
     {

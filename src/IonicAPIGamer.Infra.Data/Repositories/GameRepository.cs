@@ -20,13 +20,14 @@ public class GameRepository : IGameRepository
         _context.SaveChanges();
     }
 
-    public async Task<List<Game>> GetAll()
+    public async Task<IEnumerable<Game>> GetAll()
     {
         return await _context.Games.ToListAsync();
     }
 
     public async Task<Game> GetGameById(int id)
     {
-        return await _context.Games.Where(g=>g.Id == id).FirstOrDefaultAsync();
+        return await _context.Games.Where(g => g.Id == id).FirstOrDefaultAsync();
     }
+
 }

@@ -7,6 +7,18 @@ public class Game
     public decimal Price { get; private set; }
     public bool IsActive { get; private set; }
 
+    public Game(int id, string name, decimal price)
+    {
+        if (!IsAValidGame(name, price))
+        {
+            throw new Exception("Invalid Game Data!");
+        }
+
+        Id = id;
+        Name = name;
+        Price = price;
+        IsActive = true;
+    }
     public Game(string name, decimal price)
     {
         if (!IsAValidGame(name, price))

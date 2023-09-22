@@ -23,7 +23,7 @@ public class GameService : IGameService
         return await _gameRepository.GetGameById(id);
     }
 
-    public async Task<List<Game>> GetGames()
+    public async Task<IEnumerable<Game>> GetGames()
     {
         return await _gameRepository.GetAll();
     }

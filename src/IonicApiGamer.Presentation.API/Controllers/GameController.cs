@@ -25,7 +25,7 @@ namespace IonicApiGamer.Presentation.API.Controllers
 
         [HttpGet]
         [Route("GetAll")]
-        public async Task<List<Game>> GetAll()
+        public async Task<IEnumerable<Game>> GetAll()
         {
             return await _gameService.GetGames();
         }
