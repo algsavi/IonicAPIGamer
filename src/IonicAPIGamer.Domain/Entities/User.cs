@@ -30,7 +30,7 @@ public class User
 
     private bool IsAValidUser(string name)
     {
-        if (name.Length < 3 && name.Length > 50)
+        if (name.Length < 3 || name.Length > 50)
             return false;
 
         return true;
