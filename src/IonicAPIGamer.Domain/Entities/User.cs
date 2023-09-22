@@ -1,10 +1,13 @@
-﻿namespace IonicAPIGamer.Domain;
+﻿namespace IonicAPIGamer.Domain.Entities;
 
 public class User
 {
+    public Guid Id { get; set; }
     public string Name { get; private set; }
     public DateOnly BirthDate { get; private set; }
     public bool IsActive { get; private set; }
+
+    public List<Game> Games { get; private set; }
 
     public User() { }
 

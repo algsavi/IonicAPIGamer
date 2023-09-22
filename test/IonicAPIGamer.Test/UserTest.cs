@@ -1,3 +1,5 @@
+using IonicAPIGamer.Domain.Entities;
+
 namespace IonicAPIGamer.Test;
 
 public class UserTest

@@ -1,4 +1,6 @@
-﻿namespace IonicAPIGamer.Test;
+﻿using IonicAPIGamer.Domain.Entities;
+
+namespace IonicAPIGamer.Test;
 
 public class GameTest
 {
