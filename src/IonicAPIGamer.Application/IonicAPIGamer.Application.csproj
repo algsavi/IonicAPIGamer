@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
+    <ProjectReference Include="..\IonicApiGaner.Model\IonicApiGamer.Model.csproj" />
   </ItemGroup>
 
 </Project>

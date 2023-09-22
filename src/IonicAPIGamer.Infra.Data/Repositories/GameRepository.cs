@@ -30,4 +30,10 @@ public class GameRepository : IGameRepository
         return await _context.Games.Where(g => g.Id == id).FirstOrDefaultAsync();
     }
 
+    public void InactiveGame(Game game)
+    {
+        _context.Games.Attach(game);
+        _context.Entry(game).Property(x => x.IsActive).IsModified = true;
+        _context.SaveChanges();
+    }
 }

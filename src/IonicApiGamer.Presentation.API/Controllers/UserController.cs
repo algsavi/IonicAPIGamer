@@ -1,7 +1,11 @@
-﻿using IonicAPIGamer.Application.Interfaces;
+﻿using IonicApiGamer.Model.ApiReturn;
+using IonicApiGamer.Model.Constants;
+using IonicAPIGamer.Application.Interfaces;
+using IonicAPIGamer.Application.Services;
 using IonicAPIGamer.Domain.Entities;
 using IonicApiGaner.Model.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IonicApiGamer.Presentation.API.Controllers
 {
@@ -18,18 +22,63 @@ namespace IonicApiGamer.Presentation.API.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        public async Task<User> GetById(int id)
+        public async Task<UserReturn> GetById(int id)
         {
-            return await _userService.GetUserById(id);
+            UserReturn dataToReturn = new UserReturn();
+
+            try
+            {
+                UserModel result = await _userService.GetUserById(id);
+
+                dataToReturn.Message = Constants.OK_RETURN;
+                dataToReturn.User = result;
+            }
+            catch (Exception ex)
+            {
+                dataToReturn.Message = ex.Message;
+            }
+
+            return dataToReturn;
         }
 
         [HttpPost]
         [Route("Create")]
-        public void Create(UserModel userModel)
+        public async Task<ResultReturn> Create(UserModel userModel)
         {
-            User user = new User(userModel.Name, userModel.BirthDate);
+            ResultReturn result = new ResultReturn();
 
-            _userService.CreateUser(user);
+            try
+            {
+                _userService.CreateUser(userModel);
+
+                result.Message = Constants.OK_RETURN;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        [HttpPut]
+        [Route("InactiveUser")]
+        public async Task<ResultReturn> InactiveUser(int id)
+        {
+            ResultReturn result = new ResultReturn();
+
+            try
+            {
+                _userService.InactiveUser(id);
+
+                result.Message = Constants.OK_RETURN;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
         }
     }
 }

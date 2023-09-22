@@ -1,4 +1,6 @@
-﻿using IonicAPIGamer.Application.Interfaces;
+﻿using IonicApiGamer.Model.ApiReturn;
+using IonicApiGamer.Model.Constants;
+using IonicAPIGamer.Application.Interfaces;
 using IonicAPIGamer.Domain.Entities;
 using IonicApiGaner.Model.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,25 +20,84 @@ namespace IonicApiGamer.Presentation.API.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        public async Task<Game> GetById(int id)
+        public async Task<GameReturn> GetById(int id)
         {
-            return await _gameService.GetGameById(id);
+            GameReturn dataToReturn = new GameReturn();
+
+            try
+            {
+                GameModel result = await _gameService.GetGameById(id);
+
+                dataToReturn.Message = Constants.OK_RETURN;
+                dataToReturn.Game = result;
+            }
+            catch (Exception ex)
+            {
+                dataToReturn.Message = ex.Message;
+            }
+
+            return dataToReturn;
         }
 
         [HttpGet]
         [Route("GetAll")]
-        public async Task<IEnumerable<Game>> GetAll()
+        public async Task<GameListReturn> GetAll()
         {
-            return await _gameService.GetGames();
+            GameListReturn dataToReturn = new GameListReturn();
+
+            try
+            {
+                IEnumerable<GameModel> result = await _gameService.GetGames();
+                
+                dataToReturn.Message = Constants.OK_RETURN;
+                dataToReturn.GameList = result.ToList();
+            }
+            catch (Exception ex)
+            {
+                dataToReturn.Message = ex.Message;
+            }
+
+            return dataToReturn;
         }
 
         [HttpPost]
         [Route("Create")]
-        public void Create(GameModel gameModel)
+        public async Task<ResultReturn> Create(GameModel gameModel)
         {
-            Game game = new Game(gameModel.Name, gameModel.Price);
+            ResultReturn result = new ResultReturn();
 
-            _gameService.CreateGame(game);
+            try
+            {
+                _gameService.CreateGame(gameModel);
+
+                result.Message = Constants.OK_RETURN;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
+        }
+
+        [HttpPut]
+        [Route("InactiveGame")]
+        public async Task<ResultReturn> InactiveGame(int id)
+        {
+            ResultReturn result = new ResultReturn();
+
+            try
+            {
+                _gameService.InactiveGame(id);
+
+                result.Message = Constants.OK_RETURN;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+
+            return result;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using IonicAPIGamer.Application.Interfaces;
 using IonicAPIGamer.Domain.Entities;
 using IonicAPIGamer.Domain.Interfaces;
+using IonicApiGaner.Model.Models;
 
 namespace IonicAPIGamer.Application.Services;
 
@@ -13,13 +14,26 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public void CreateUser(User user)
+    public void CreateUser(UserModel user)
     {
-        _userRepository.CreateUser(user);
+        var newUser = new User(user.Name, user.BirthDate);
+
+        _userRepository.CreateUser(newUser);
     }
 
-    public Task<User> GetUserById(int id)
+    public async Task<UserModel> GetUserById(int id)
     {
-        return _userRepository.GetUserById(id);
+        var user = await _userRepository.GetUserById(id);
+
+        return new UserModel { Name = user.Name, BirthDate = user.BirthDate };
+    }
+
+    public async void InactiveUser(int id)
+    {
+        var user = _userRepository.GetUserById(id).Result;
+
+        user.InactiveUser();
+
+        _userRepository.InactiveUser(user);
     }
 }

@@ -19,6 +19,13 @@ public class UserRepository : IUserRepository
         return await _context.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
     }
 
+    public void InactiveUser(User user)
+    {
+        _context.Users.Attach(user);
+        _context.Entry(user).Property(x => x.IsActive).IsModified = true;
+        _context.SaveChanges();
+    }
+
     void IUserRepository.CreateUser(User user)
     {
         _context.Users.Add(user);

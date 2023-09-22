@@ -1,9 +1,11 @@
 ﻿using IonicAPIGamer.Domain.Entities;
+using IonicApiGaner.Model.Models;
 
 namespace IonicAPIGamer.Application.Interfaces;
 
 public interface IUserService
 {
-    Task<User> GetUserById(int id);
-    void CreateUser(User user);
+    Task<UserModel> GetUserById(int id);
+    void CreateUser(UserModel user);
+    void InactiveUser(int id);
 }

@@ -1,6 +1,7 @@
 ﻿using IonicAPIGamer.Application.Interfaces;
 using IonicAPIGamer.Domain.Entities;
 using IonicAPIGamer.Domain.Interfaces;
+using IonicApiGaner.Model.Models;
 
 namespace IonicAPIGamer.Application.Services;
 
@@ -13,18 +14,35 @@ public class GameService : IGameService
         _gameRepository = gameRegameRepository;
     }
 
-    public void CreateGame(Game game)
+    public void CreateGame(GameModel game)
     {
-        _gameRepository.CreateGame(game);
+        var newGame = new Game(game.Name, game.Price);
+
+        _gameRepository.CreateGame(newGame);
     }
 
-    public async Task<Game> GetGameById(int id)
+    public async Task<GameModel> GetGameById(int id)
     {
-        return await _gameRepository.GetGameById(id);
+        var game = await _gameRepository.GetGameById(id);
+
+        return new GameModel { Name = game.Name, Price = game.Price };
     }
 
-    public async Task<IEnumerable<Game>> GetGames()
+    public async Task<IEnumerable<GameModel>> GetGames()
     {
-        return await _gameRepository.GetAll();
+        var games = await _gameRepository.GetAll();
+
+        return games.Select( g =>
+            new GameModel {  Name = g.Name, Price = g.Price }
+        );
+    }
+
+    public async void InactiveGame(int id)
+    {
+        var game = _gameRepository.GetGameById(id).Result;
+
+        game.InactiveGame();
+
+        _gameRepository.InactiveGame(game);
     }
 }

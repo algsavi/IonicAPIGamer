@@ -6,4 +6,5 @@ public interface IUserRepository
 {
     Task<User> GetUserById(int id);
     void CreateUser(User user);
+    void InactiveUser(User user);
 }

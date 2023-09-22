@@ -7,4 +7,5 @@ public interface IGameRepository
     Task<IEnumerable<Game>> GetAll();
     Task<Game> GetGameById(int id);
     void CreateGame(Game game);
+    void InactiveGame(Game game);
 }
