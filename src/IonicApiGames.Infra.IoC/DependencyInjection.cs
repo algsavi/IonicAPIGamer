@@ -16,15 +16,16 @@ public static class DependencyInjection
 {
     public static IServiceCollection ConfigureDependencies(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("ApplicationConnection");
+        var sqlConnectionString = configuration.GetConnectionString("sqlConnectionString");
+        var redisConnectionString = configuration.GetConnectionString("redisConnectionString");
 
         services.AddDbContext<IonicApiGamerDbContext>(options => {
-            options.UseSqlServer(connectionString);
+            options.UseSqlServer(sqlConnectionString);
         });
 
         services.AddStackExchangeRedisCache(options => {
             options.InstanceName = "redis-instance-";
-            options.Configuration = "redisdb:6379";
+            options.Configuration = redisConnectionString;
         });
 
         services.AddScoped<IUserRepository, UserRepository>();
