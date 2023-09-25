@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\IonicAPIGamer.Infra.Caching\IonicAPIGamer.Infra.Caching.csproj" />
     <ProjectReference Include="..\IonicAPIGamer.Application\IonicAPIGamer.Application.csproj" />
+    <ProjectReference Include="..\IonicAPIGamer.Infra.Caching\IonicAPIGamer.Infra.Caching.csproj" />
     <ProjectReference Include="..\IonicAPIGamer.Infra.Data\IonicAPIGamer.Infra.Data.csproj" />
   </ItemGroup>
 

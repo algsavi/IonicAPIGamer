@@ -21,12 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\IonicAPIGamer.Infra.Caching\IonicAPIGamer.Infra.Caching.csproj" />
     <ProjectReference Include="..\IonicAPIGamer.Application\IonicAPIGamer.Application.csproj" />
     <ProjectReference Include="..\IonicAPIGamer.Domain\IonicAPIGamer.Domain.csproj" />
+    <ProjectReference Include="..\IonicAPIGamer.Infra.Caching\IonicAPIGamer.Infra.Caching.csproj" />
     <ProjectReference Include="..\IonicApiGames.Infra.IoC\IonicApiGamer.Infra.IoC.csproj" />
     <ProjectReference Include="..\IonicApiGaner.Model\IonicApiGamer.Model.csproj" />
-    <ProjectReference Include="..\IonicApiGaner.Model\IonicApiGaner.Model.csproj" />
   </ItemGroup>
 
 </Project>
