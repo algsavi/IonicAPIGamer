@@ -20,7 +20,7 @@ public class IonicApiGamerDbContext : DbContext
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(_configuration.GetConnectionString("sqlConnectionString"));
+        => optionsBuilder.UseSqlServer("Server=ionicapidb;Database=APIGamer;User Id=sa;Password=p@ssw0rd;TrustServerCertificate=True;");
 
 
     public virtual DbSet<User> Users { get; set; }
